@@ -1,32 +1,22 @@
-let x = 0;
-let y = 0;
-let dim = 80.0;
+let img; // 声明变量 'img'
 
 function setup() {
-    createCanvas(displayWidth, displayHeight);
-    noStroke();
+    createCanvas(1080, 720);
+    img = loadImage('res/women.png'); // 加载图像
+}
+
+let x = 0
+let y = 0
+let speed = 1
+function update(){
+    x = x + speed;
 }
 
 function draw() {
-    background(102);
-    // Animate by increasing our x value
-    x = x + 0.8;
-    // If the shape goes off the canvas, reset the position
-    if (x > width + dim) {
-        x = -dim;
-    }
-
-    // Even though our rect command draws the shape with its
-    // center at the origin, translate moves it to the new
-    // x and y position
-    translate(x, height / 2 - dim / 2);
-    fill(255);
-    rect(-dim / 2, -dim / 2, dim, dim);
-
-    // Transforms accumulate. Notice how this rect moves
-    // twice as fast as the other, but it has the same
-    // parameter for the x-axis value
-    translate(x, dim);
-    fill(0);
-    rect(-dim / 2, -dim / 2, dim, dim);
+    // 在坐标(0, 0)，显示原图大小的图像 
+    background(0);
+    image(img, x, y, img.width / 3, img.height / 3);
+    
+   
+    
 }
